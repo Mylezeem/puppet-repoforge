@@ -13,6 +13,7 @@
 class repoforge inherits repoforge::params {
 
   exec {"rpm -Uvh ${repoforge_url}" :
+    path   => '/bin',
     unless => "rpm -q ${repoforge_package}",
   }
 
