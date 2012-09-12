@@ -56,8 +56,6 @@ class repoforge inherits repoforge::params {
       path => "/etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag",
     }
 
-  } elsif $::osfamilly == 'Debian' {
-    notice ("${::operatingsystem} is not handled in this version of this module.  It is plan on future development.")
   } else {
     notice ("Your operating system ${::operatingsystem} will not have the RepoForge repository applied")
   }
