@@ -17,8 +17,4 @@ class repoforge::params {
     default => $::architecture,
   }
 
-  $repoforge_package = "rpmforge-release-0.5.2-2.el${::lsbmajdistrelease}.rf.${arch}"
-
-  $repoforge_url = "http://pkgs.repoforge.org/rpmforge-release/${repoforge_package}.rpm"
-
 }
