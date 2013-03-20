@@ -18,7 +18,7 @@ class repoforge::params {
   }
 
   $baseurl = "http://apt.sw.be/redhat/el${::os_maj_version}/en/${::arch}"
-  $mirrorlist = "http://apt.sw.be/redhat/el${::os_maj_version}/en"
+  $mirrorlist = "http://mirrorlist.repoforge.org/el${::os_maj_version}"
 
   $repos = {
     'rpmforge' => 'rpmforge',
