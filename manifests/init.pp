@@ -3,45 +3,48 @@
 #  The class ensures repoforge repo is installed
 #
 # Parameters:
+# [*enabled*]
+#   An array of repository names to be enabled.  Default is ['rpmforge'].
+#
+# [*baseurl*]
+#   The root of the repository baseurl parameter.  Default points to the main
+#   Repoforge mirror; override this if you want to specify a different mirror.
+#
+# [*mirrorlist*]
+#   The root of the repository mirrorlist parameter.  Default points to the
+#   mirrorlist file on the main Repoforge mirror; override this if you want to
+#   specify a different mirrorlist file.
 #
 # Actions:
 #
 # Requires:
+# [*stdlib*]
 #
 # Sample Usage:
-#  include repoforge
-class repoforge inherits repoforge::params {
+#  class {
+#    'repoforge':
+#      enabled => ['rpmforge','extras'],
+#      baseurl => "http://mirror/el${::os_maj_version}/en/${::architecture}";
+#  }
+class repoforge (
+  $enabled    = $repoforge::params::enabled,
+  $baseurl    = $repoforge::params::baseurl,
+  $mirrorlist = $repoforge::params::mirrorlist,
+) inherits repoforge::params {
+
+  validate_array($repoforge::enabled)
+  validate_string($repoforge::baseurl,$repoforge::mirrorlist)
 
   if $::osfamily == 'RedHat' {
+    $repolist = keys($repoforge::params::repos)
 
-    yumrepo {'rpmforge' :
-      descr      => "RHEL ${::os_maj_version} - RPMforge.net - dag",
-      baseurl    => "http://apt.sw.be/redhat/el${::os_maj_version}/en/${::arch}/rpmforge",
-      mirrorlist => "http://apt.sw.be/redhat/el${::os_maj_version}/en/mirrors-rpmforge",
-      enabled    => 1,
-      protect    => 0,
-      gpgcheck   => 1,
-      gpgkey     => "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag",
-    }
-
-    yumrepo {'rpmforge-extras' :
-      descr      => "RHEL ${::os_maj_version} - RPMforge.net - extras",
-      baseurl    => "http://apt.sw.be/redhat/el${::os_maj_version}/en/${::arch}/extras",
-      mirrorlist => "http://apt.sw.be/redhat/el${::os_maj_version}/en/mirrors-rpmforge-extras",
-      enabled    => 0,
-      protect    => 0,
-      gpgcheck   => 1,
-      gpgkey     => "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag",
-    }
-
-    yumrepo {'rpmforge-testing' :
-      descr      => "RHEL ${::os_maj_version} - RPMforge.net - testing",
-      baseurl    => "http://apt.sw.be/redhat/el${::os_maj_version}/en/${::arch}/testing",
-      mirrorlist => "http://apt.sw.be/redhat/el${::os_maj_version}/en/mirrors-rpmforge-testing",
-      enabled    => 0,
-      protect    => 0,
-      gpgcheck   => 1,
-      gpgkey     => "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag",
+    repoforge::yumrepo {
+      $repoforge::repolist:
+        require    => Repoforge::Rpm_gpg_key["RPM-GPG-KEY-rpmforge-dag"],
+        repos      => $repoforge::params::repos,
+        baseurl    => $repoforge::baseurl,
+        mirrorlist => $repoforge::mirrorlist,
+        enabled    => $repoforge::enabled;
     }
 
     file {"/etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag" :
@@ -59,5 +62,4 @@ class repoforge inherits repoforge::params {
   } else {
     notice ("Your operating system ${::operatingsystem} will not have the RepoForge repository applied")
   }
-
 }

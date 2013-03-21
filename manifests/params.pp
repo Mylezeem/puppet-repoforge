@@ -17,4 +17,15 @@ class repoforge::params {
     default => $::architecture,
   }
 
+  $baseurl = "http://apt.sw.be/redhat/el${::os_maj_version}/en/${::arch}"
+  $mirrorlist = "http://mirrorlist.repoforge.org/el${::os_maj_version}"
+
+  $repos = {
+    'rpmforge' => 'rpmforge',
+    'extras'   => 'rpmforge-extras',
+    'testing'  => 'rpmforge-testing',
+  }
+
+  $enabled = [ 'rpmforge' ]
+
 }
