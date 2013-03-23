@@ -40,14 +40,14 @@ class repoforge (
 
     repoforge::yumrepo {
       $repoforge::repolist:
-        require    => Repoforge::Rpm_gpg_key["RPM-GPG-KEY-rpmforge-dag"],
+        require    => Repoforge::Rpm_gpg_key['RPM-GPG-KEY-rpmforge-dag'],
         repos      => $repoforge::params::repos,
         baseurl    => $repoforge::baseurl,
         mirrorlist => $repoforge::mirrorlist,
         enabled    => $repoforge::enabled;
     }
 
-    file {"/etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag" :
+    file {'/etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag' :
       ensure => present,
       owner  => 'root',
       group  => 'root',
@@ -55,8 +55,8 @@ class repoforge (
       source => 'puppet:///modules/repoforge/RPM-GPG-KEY-rpmforge-dag',
     }
 
-    repoforge::rpm_gpg_key { "RPM-GPG-KEY-rpmforge-dag" :
-      path => "/etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag",
+    repoforge::rpm_gpg_key { 'RPM-GPG-KEY-rpmforge-dag' :
+      path => '/etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag',
     }
 
   } else {
