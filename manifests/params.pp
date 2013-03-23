@@ -12,12 +12,7 @@
 #
 class repoforge::params {
 
-  $arch = $::lsbmajdistrelease ? {
-    '6'     => $::architecture ? {'i386' => 'i686', default => $::architecture,},
-    default => $::architecture,
-  }
-
-  $baseurl = "http://apt.sw.be/redhat/el${::os_maj_version}/en/${::arch}"
+  $baseurl = "http://apt.sw.be/redhat/el${::os_maj_version}/en/${::architecture}"
   $mirrorlist = "http://mirrorlist.repoforge.org/el${::os_maj_version}"
 
   $repos = {
