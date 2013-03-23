@@ -31,7 +31,7 @@ describe 'repoforge' do
 
     it 'instantiate the yum repos' do
       should contain_repoforge__yumrepo('rpmforge').with({
-         'repos'      => {"rpmforge"=>"rpmforge", "extras"=>"rpmforge-extras","testing"=>"rpmforge-testing"},
+         'repos'      => {"extras"=>"rpmforge-extras","rpmforge"=>"rpmforge","testing"=>"rpmforge-testing"},
          'baseurl'    => 'http://apt.sw.be/redhat/el6/en/i386',
          'mirrorlist' => 'http://mirrorlist.repoforge.org/el6',
          'enabled'    => ['rpmforge'],

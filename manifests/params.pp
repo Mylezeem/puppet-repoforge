@@ -16,8 +16,8 @@ class repoforge::params {
   $mirrorlist = "http://mirrorlist.repoforge.org/el${::os_maj_version}"
 
   $repos = {
-    'rpmforge' => 'rpmforge',
     'extras'   => 'rpmforge-extras',
+    'rpmforge' => 'rpmforge',
     'testing'  => 'rpmforge-testing',
   }
 
