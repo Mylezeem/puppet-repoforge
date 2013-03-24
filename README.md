@@ -1,4 +1,4 @@
-# RPM Forge Puppet Module
+# RPM Forge Puppet Module [![Build Status](https://travis-ci.org/Spredzy/puppet-repoforge.png)](https://travis-ci.org/Spredzy/puppet-repoforge)
 
 This module aims to declare and enable rpm forge repositories
 
