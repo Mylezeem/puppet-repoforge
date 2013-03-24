@@ -7,4 +7,4 @@ summary 'A Puppet Module that installs rpmforge\'s repos '
 description 'A Puppet Module that installs rpmforge\'s repos '
 project_page 'https://github.com/Spredzy/puppet-repoforge'
 
-dependency 'puppetlabs/stdlib', '= 3.2.0'
+dependency 'puppetlabs/stdlib', '>= 3.2.0'
