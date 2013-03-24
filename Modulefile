@@ -1,11 +1,10 @@
 name    'yguenane/repoforge'
-version '0.0.1'
-source 'UNKNOWN'
-author 'yguenane'
+version '0.1.0'
+source 'https://github.com/Spredzy/puppet-repoforge'
+author 'Yanis Guenane <yguenane@gmail.com>'
 license 'Apache License, Version 2.0'
-summary 'UNKNOWN'
-description 'UNKNOWN'
-project_page 'UNKNOWN'
+summary 'A Puppet Module that installs rpmforge\'s repos '
+description 'A Puppet Module that installs rpmforge\'s repos '
+project_page 'https://github.com/Spredzy/puppet-repoforge'
 
-## Add dependencies, if any:
-# dependency 'username/name', '>= 1.2.0'
+dependency 'puppetlabs/stdlib', '= 3.2.0'

@@ -1,16 +1,30 @@
-repoforge
+# RPM Forge Puppet Module
 
-This is the repoforge module.
+This module aims to declare and enable rpm forge repositories
 
-License
--------
+## Usage
+
+### Simple Usage
+
+    include repoforge
+
+### Custom Usage
+
+    class {'repoforge' :
+      enabled => ['rpmforge', 'extras'],
+      baseurl => 'http://apt.sw.be/redhat/el6/en/${::architecture}',
+    }
+
+## License
+
+Apache License v2
 
 
-Contact
--------
+## Contact
+
+Yanis Guenane - yguenane@gmail.com
 
 
-Support
--------
+## Support
 
-Please log tickets and issues at our [Projects site](http://projects.example.com)
+Please log tickets and issues at our [Projects site](https://github.com/Spredzy/puppet-repoforge)
