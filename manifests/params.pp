@@ -17,6 +17,9 @@ class repoforge::params {
 
   $repos = {'extras'=>'rpmforge-extras','rpmforge'=>'rpmforge','testing'=>'rpmforge-testing'}
 
+  $includepkgs = { 'extras'=> absent, 'rpmforge' => absent, 'testing'=> absent }
+  $exclude = { 'extras'=> absent ,'rpmforge' => absent, 'testing'=> absent }
+
   $enabled = [ 'rpmforge' ]
 
 }

@@ -30,6 +30,8 @@ class repoforge (
   $enabled    = $repoforge::params::enabled,
   $baseurl    = $repoforge::params::baseurl,
   $mirrorlist = $repoforge::params::mirrorlist,
+  $includepkgs = {},
+  $exclude = {},
 ) inherits repoforge::params {
 
   validate_array($repoforge::enabled)
@@ -40,11 +42,13 @@ class repoforge (
 
     repoforge::yumrepo {
       $repoforge::repolist:
-        require    => Repoforge::Rpm_gpg_key['RPM-GPG-KEY-rpmforge-dag'],
-        repos      => $repoforge::params::repos,
-        baseurl    => $repoforge::baseurl,
-        mirrorlist => $repoforge::mirrorlist,
-        enabled    => $repoforge::enabled;
+        require     => Repoforge::Rpm_gpg_key['RPM-GPG-KEY-rpmforge-dag'],
+        repos       => $repoforge::params::repos,
+        baseurl     => $repoforge::baseurl,
+        mirrorlist  => $repoforge::mirrorlist,
+        enabled     => $repoforge::enabled,
+        includepkgs => merge($repoforge::params::includepkgs, $includepkgs),
+        exclude     => merge($repoforge::params::exclude, $exclude),
     }
 
     file {'/etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag' :
