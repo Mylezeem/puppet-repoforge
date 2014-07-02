@@ -11,8 +11,10 @@ This module aims to declare and enable rpm forge repositories
 ### Custom Usage
 
     class {'repoforge' :
-      enabled => ['rpmforge', 'extras'],
-      baseurl => 'http://apt.sw.be/redhat/el6/en/${::architecture}',
+      enabled     => ['rpmforge', 'extras'],
+      baseurl     => 'http://apt.sw.be/redhat/el6/en/${::architecture}',
+      includepkgs => { 'extras' => 'memcached' },
+      exclude     => { 'rpmforge' => 'nagios*', 'testing' => 'perl*' },
     }
 
 ## License

@@ -35,9 +35,12 @@
 #
 define repoforge::yumrepo (
   $repos,
+  $repo_shortname = $name,
   $baseurl,
   $mirrorlist,
-  $enabled
+  $enabled,
+  $includepkgs,
+  $exclude,
 ) {
   $reponame = $repos[$title]
 
@@ -45,12 +48,14 @@ define repoforge::yumrepo (
 
   yumrepo {
     $reponame :
-      descr      => "RHEL ${::os_maj_version} - RPMforge.net - ${reponame}",
-      baseurl    => "${baseurl}/${reponame}",
-      mirrorlist => "${mirrorlist}/mirrors-${reponame}",
-      enabled    => bool2num(member($enabled,$title)),
-      protect    => 0,
-      gpgcheck   => 1,
-      gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag',
+      descr       => "RHEL ${::os_maj_version} - RPMforge.net - ${reponame}",
+      baseurl     => "${baseurl}/${reponame}",
+      mirrorlist  => "${mirrorlist}/mirrors-${reponame}",
+      enabled     => bool2num(member($enabled,$title)),
+      protect     => 0,
+      gpgcheck    => 1,
+      gpgkey      => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag',
+      includepkgs => $includepkgs[$repo_shortname],
+      exclude     => $exclude[$repo_shortname],
   }
 }
