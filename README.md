@@ -1,4 +1,4 @@
-# RPM Forge Puppet Module [![Build Status](https://travis-ci.org/Spredzy/puppet-repoforge.png)](https://travis-ci.org/Spredzy/puppet-repoforge)
+# RPM Forge Puppet Module [![Build Status](https://travis-ci.org/Mylezeem/puppet-repoforge.png)](https://travis-ci.org/Mylezeem/puppet-repoforge)
 
 This module aims to declare and enable rpm forge repositories
 
@@ -29,4 +29,4 @@ Yanis Guenane - yguenane@gmail.com
 
 ## Support
 
-Please log tickets and issues at our [Projects site](https://github.com/Spredzy/puppet-repoforge)
+Please log tickets and issues at our [Projects site](https://github.com/Mylezeem/puppet-repoforge)
