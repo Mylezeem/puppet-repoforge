@@ -1,0 +1,38 @@
+{
+  "name": "yguenane-repoforge",
+  "version": "0.2.1",
+  "author": "Yanis Guenane",
+  "summary": "A Puppet module that installs repoforge's repos",
+  "license": "Apache License 2.0",
+  "source": "https://github.com/Mylezeem/puppet-repoforge",
+  "project_page": "https://github.com/Mylezeem/puppet-repoforge",
+  "issues_url": "https://github.com/Mylezeem/puppet-repoforge/issues",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6"
+      ]
+    },
+    {
+      "operatingsystem": "Fedora",
+      "operatingsystemrelease": [
+        "19",
+        "20"
+      ]
+    }
+  ],
+  "requirements": [
+    {"name": "puppet","version_requirement": "3.x"}
+  ],
+  "description": "A Puppet module that installs repoforge's repos",
+  "dependencies": [
+    {"name":"puppetlabs/stdlib","version_requirement":">= 4.3.2"}
+  ]
+}

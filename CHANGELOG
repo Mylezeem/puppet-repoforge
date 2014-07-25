@@ -1,4 +1,7 @@
-2013-07-21 Yanis Guenane <yguenane@gmail.com> - 0.2.0
+2014-07-25 Yanis Guenane <yguenane@gmail.com> - 0.2.1
+  * Adding metadata.json to be forge api v3 compliant
+
+2014-07-21 Yanis Guenane <yguenane@gmail.com> - 0.2.0
   * Adding support for includepkgs and exclude on a per-repo basis (@Dave Garbus)
 
 2013-03-24 Yanis Guenane <yguenane@gmail.com> - 0.1.0
