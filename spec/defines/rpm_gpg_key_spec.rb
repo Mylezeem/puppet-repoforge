@@ -14,7 +14,7 @@ describe 'repoforge::rpm_gpg_key' do
   it 'imports the gpg key into rpm' do
     should contain_exec('import-RPM-GPG-KEY-rpmforge-dag').with({
         'command' => 'rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag',
-        'unless'  => "rpm -q gpg-pubkey-$(echo $(gpg --throw-keyids < ${path}) | cut --characters=11-18 | tr '[A-Z]' '[a-z]')",
+        'unless'  => "rpm -q gpg-pubkey-$(echo $(gpg --throw-keyids < /etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag) | cut --characters=11-18 | tr '[A-Z]' '[a-z]')",
     })
   end
 
