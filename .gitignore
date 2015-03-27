@@ -1,1 +1,11 @@
+# Managed by modulesync
+# Configs https://github.com/Mylezeem/mylezeem-msync
+#
 pkg/
+Gemfile.lock
+vendor/
+spec/fixtures/
+.vagrant/
+.bundle/
+coverage/
+*.sw*
